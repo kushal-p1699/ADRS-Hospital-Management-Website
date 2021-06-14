@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- <title>Sider Menu Bar CSS</title> -->
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
+      <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>    
+    <script src="scripts/AuthScript.js"></script>
+    <script src="scripts/ProcessData.js"></script>
+    
+  </head>
+  <body>
+
+    <input type="checkbox" id="check">
+    <label for="check" class="check_label">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+      <header onclick="window.location.href='/index.html'"> ADRS</header>
+      
+      <div id="sidebarBeforeLogin"> 
+        <ul>
+          <li><a href="login.html"><i class="fas fa-qrcode"></i>Login</a></li>
+        </ul>
+      </div>
+
+      <!-- if user signed in display the below div -->
+      <div id="sidebarAfterLogin"> 
+        <ul>
+          <li><a href="dashboard.html"><i class="fas fa-qrcode"></i>Dashboard</a></li>
+          <li><a href="/warriors.html"><i class="fas fa-user-plus"></i>Hospital Details</a></li>
+          <li><a href="About.html"><i class="far fa-question-circle"></i>About</a></li>
+          <li><a onclick="onLogout()"><i class="fa fa-sign-out"></i>Logout</a></li>
+        </ul> 
+      </div>
+
+      
+      
+    </div>
+    <section>
+      <div class="main-heading">
+        <h1>Accident Detection and Reporting System (ADRS)</h1>
+        <h2>Jeeva Rakshak</h2>
+      </div>
+    </section>
+
+    <!-- id user not logged in, prompt login page -->
+    <script>
+      var lists = document.getElementsByTagName("ul");
+
+      firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+              // userId = user.uid;
+              console.log("user signed in..");
+              document.getElementById("sidebarBeforeLogin").style.visibility = "hidden";
+              document.getElementById("sidebarBeforeLogin").style.display="none";
+              document.getElementById("sidebarAfterLogin").style.visibility = "visible";
+
+              console.log(user.uid);
+              localStorage.setItem("userId", user.uid);
+              // DisplayHospitalData(user.uid);
+          } else {
+              console.log("No user signed in..");
+              // is user not signed in go to signin page
+              // window.location.href = "/login.html";
+              document.getElementById("sidebarAfterLogin").style.visibility = "hidden";
+              document.getElementById("sidebarBeforeLogin").style.display="block";
+              document.getElementById("sidebarBeforeLogin").style.visibility = "visible";
+          }
+      });
+    </script>
+
+  </body>
+</html>

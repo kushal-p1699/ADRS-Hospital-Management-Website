@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard</title>
+<link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<link rel="stylesheet" type="text/css" href="styles/dashboard.css">
+<!-- <link rel="stylesheet" type="text/css" href="styles/index.css"> -->
+
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>    
+    <script src="scripts/AuthScript.js"></script>
+    <script src="scripts/ProcessData.js"></script>
+
+</head>
+<body onload="DisplayDashBoardData()">
+  <input type="checkbox" id="check">
+    <label for="check" class="check_label">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel" style="top: 20px;"></i>
+    </label>
+    <div class="sidebar">
+      <header onclick="window.location.href='/index.html'"> ADRS</header>
+    <ul>
+      <li><a href="dashboard.html"><i class="fas fa-qrcode"></i>Dashboard</a></li>
+      <li><a href="warriors.html"><i class="fas fa-user-plus"></i>Hospital Details</a></li>
+      <li><a href="About.html"><i class="far fa-question-circle"></i>About</a></li>
+      <li><a onclick="onLogout()"><i class="fa fa-sign-out" ></i>Logout</a></li>
+      
+    </ul> 
+</div>
+ <section class="team-section">
+
+  <br>
+  <br>
+  <h3 class="text-center text-success" id="message"></h3>
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+            <h2><b> Accident Detection and Reporting System</b></h2>
+          </div>
+         
+                </div>
+      </div>
+
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+            
+                         <th>Name</th>
+                        <th>Phone</th>
+                        <th>BloodGroup</th>
+                        <th>Relative Number</th>
+                        <th>Accident Location</th>
+                        <th>Accident Date & Time</th>
+                        <th>Ambulance Driver</th>
+                        
+                      
+                    </tr>
+                </thead>
+                <tbody>
+        
+                <tr>
+          
+                  <td><p id="dash_name"></p></td>
+                  <td><p id="dash_phone"></p></td>
+                  <td><p id="dash_bg"></p></td>
+                  <td><p id="dash_relative"></p></td>
+                  <td><a id="dash_location">View Location</a></td>
+                  <td><p id="dash_date"></p></td> 
+                  <td><p id="dash_dName"></p></td>
+                </tr>
+                
+              </tbody>
+            </table>
+      
+        </div>
+    </div>
+
+  <!-- Edit Modal HTML -->
+  
+  <!-- Edit Modal HTML -->
+</section>
+
+</body>
+</html>                                                               
